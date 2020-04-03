@@ -109,7 +109,7 @@ function draw() {
 
         explode.play();
         gameStart();
-        astroid[i].x+=10;
+        astroid[i].x+=20;
 
 
     }
