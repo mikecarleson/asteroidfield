@@ -130,8 +130,7 @@ function draw() {
 
         explode.play();
         gameStart();
-        astroid[i].x-=10;
-        astroid[i].delete();
+        astroid[i].y+=300;
 
 
     }
