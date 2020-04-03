@@ -1,7 +1,3 @@
-# FlappyBird-JavaScript
+Astroid Field
 
-The Snake game, created using JavaScript, and The HTML5 canvas.
-
-Download the starter template, and follow the tutorial on youtube step by step.
-
-Tutorial link : https://www.youtube.com/watch?v=L07i4g-zhDA
+A simple 2D game that has earth dodging astroids. Counts the score for every astroid you safely evade. 
