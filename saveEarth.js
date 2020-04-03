@@ -64,21 +64,21 @@ function moveDown() {
   }
 }
 
-function moveLeft() {
-  if(eX > 0){
-    eX -= 10;
-    fly.play();
-  }
+// function moveLeft() {
+//   if(eX > 0){
+//     eX -= 10;
+//     fly.play();
+//   }
   
-}
+// }
 
-function moveRight() {
-  if(eX < cvs.width){
-    eX += 10;
-    fly.play();
-  }
+// function moveRight() {
+//   if(eX < cvs.width){
+//     eX += 10;
+//     fly.play();
+//   }
   
-}
+// }
 
 function gameStart() {
   var conf = confirm("THE EARTH HAS BEEN DESTROYED! Let's hope you have a Planet B! Your score is: " + score + " Play Again?");
@@ -94,11 +94,12 @@ document.addEventListener("keydown", function(e) {
     moveUp();
   } else if (e.keyCode === 40) {
     moveDown();
-  } else if (e.keyCode === 37) {
-    moveLeft();
-  } else if (e.keyCode === 39) {
-    moveRight();
-  }
+  } 
+  // else if (e.keyCode === 37) {
+  //   moveLeft();
+  // } else if (e.keyCode === 39) {
+  //   moveRight();
+  // }
 });
 
 
@@ -129,6 +130,7 @@ function draw() {
 
         explode.play();
         gameStart();
+        astroid[i].x-=10;
         astroid[i].delete();
 
 
