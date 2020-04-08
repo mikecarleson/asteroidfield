@@ -121,7 +121,6 @@ function missileHit() {
         impact.play();
         astroid.splice(i, 1);
         missiles.splice(m, 1);
-        console.log('hit');
         
       }
       }
