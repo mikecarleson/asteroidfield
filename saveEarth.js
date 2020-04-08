@@ -97,10 +97,7 @@ function moveDown() {
 }
 
 function fireMissile() {
-  console.log("length"+missiles.length);
-  // if (missileCount > 0){
     for (var m = 0; m < missiles.length; m++) {
-      console.log("m"+m);
       ctx.drawImage(missile, missiles[m].x, missiles[m].y);
       missiles[m].x += 10;
       requestAnimationFrame(fireMissile);
@@ -109,7 +106,6 @@ function fireMissile() {
         missiles.splice(missiles[m], 1);
       }
     }
-    // }
 }
 
 function missileHit() {
@@ -184,7 +180,6 @@ function draw() {
 
   for (var a = 0; a < ammo.length; a++) {
     ctx.drawImage(bigMissile, ammo[a].x, ammo[a].y);
-    console.log("ammo before " + ammo);
     ammo[a].x -= 2;
 
     if (ammo[a].x == 150) {
@@ -204,7 +199,6 @@ function draw() {
         if (missileCount < 3) {
           ammo.splice(a, 1);
           missileCount = 3;
-          console.log("ammo after " + ammo);
 
         }
       
