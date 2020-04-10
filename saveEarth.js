@@ -1,5 +1,5 @@
-var cvs = document.getElementById("canvas");
-var ctx = cvs.getContext("2d");
+let cvs = document.getElementById("canvas");
+let ctx = cvs.getContext("2d");
 
 
 cvs.width = window.innerWidth;
@@ -7,11 +7,12 @@ cvs.height = window.innerHeight;
 
 // load images
 
-var earth = new Image();
-var bg = new Image();
-var genAstroid = new Image();
-var missile = new Image();
-var bigMissile = new Image();
+let earth = new Image();
+let bg = new Image();
+let genAstroid = new Image();
+let missile = new Image();
+let bigMissile = new Image();
+let exploding = new Image();
 
 bg.width = window.innerWidth;
 bg.height = window.innerHeight;
@@ -20,17 +21,18 @@ bg.src = "images/background.jpg";
 genAstroid.src = "images/astroid.png";
 missile.src = "images/missile.png";
 bigMissile.src = "images/bigMissile.png";
+exploding.src = "images/explodingEarth.jpg";
 
-// some variables
+// some letiables
 
-var eX = 100;
-var eY = window.innerHeight / 2;
-var missiles = [];
-var missileCount = 3;
-var score = 0;
+let eX = 100;
+let eY = window.innerHeight / 2;
+let missiles = [];
+let missileCount = 3;
+let score = 0;
 
 
-var ammo = [];
+let ammo = [];
 
 ammo[0] = {
   x: cvs.width,
@@ -39,12 +41,12 @@ ammo[0] = {
 
 // audio files
 
-var fly = new Audio();
-var scor = new Audio();
-var theme = new Audio();
-var explode = new Audio();
-var impact = new Audio();
-var launch = new Audio();
+let fly = new Audio();
+let scor = new Audio();
+let theme = new Audio();
+let explode = new Audio();
+let impact = new Audio();
+let launch = new Audio();
 
 
 fly.src = "sounds/fly.mp3";
@@ -56,7 +58,7 @@ launch.src = "sounds/launch.wav";
 
 // astroid coordinates
 
-var astroid = [];
+let astroid = [];
 
 astroid[0] = {
   x: cvs.width,
@@ -64,11 +66,8 @@ astroid[0] = {
 };
 
 document.addEventListener("keydown", function (e) {
-  if (e.keyCode === 38) {
-    moveUp();
-  } else if (e.keyCode === 40) {
-    moveDown();
-  } else if (e.keyCode === 32 && missiles.length < 1 && missileCount > 0) {
+ 
+    if (e.keyCode === 32 && missiles.length < 1 && missileCount > 0) {
     launch.play();
     missileCount--;
     missiles.push({
@@ -79,25 +78,33 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+var UP = false; 
+var DOWN = false;
 
-// on key down
-
-function moveUp() {
-  if (eY > 0) {
-    eY -= 10;
-    fly.play();
-  }
+function move() {
+	
+	if(UP && eY > 0) { 
+		eY -= 5;
+	}
+	if(DOWN && eY < cvs.height - 100) {
+		eY += 5;	
+	}
+	
 }
 
-function moveDown() {
-  if (eY < cvs.height - 100) {
-    eY += 10;
-    fly.play();
-  }
+document.onkeydown = function(e) {
+	if(e.keyCode == 38) UP = true;
+	if(e.keyCode == 40) DOWN = true;
 }
+
+document.onkeyup = function(e) {
+	if(e.keyCode == 38) UP = false;
+	if(e.keyCode == 40) DOWN = false;
+}
+
 
 function fireMissile() {
-    for (var m = 0; m < missiles.length; m++) {
+    for (let m = 0; m < missiles.length; m++) {
       ctx.drawImage(missile, missiles[m].x, missiles[m].y);
       missiles[m].x += 10;
       requestAnimationFrame(fireMissile);
@@ -109,8 +116,8 @@ function fireMissile() {
 }
 
 function missileHit() {
-  for (var i = 0; i < astroid.length; i++) {
-    for (var m = 0; m < missiles.length; m++) {
+  for (let i = 0; i < astroid.length; i++) {
+    for (let m = 0; m < missiles.length; m++) {
 
       if (
         missiles[m].x + 40 > astroid[i].x &&
@@ -128,7 +135,7 @@ function missileHit() {
 }
 
 function gameStart() {
-  var conf = confirm(
+  let conf = confirm(
     "THE EARTH HAS BEEN DESTROYED! Let's hope you have a Planet B! Your score is: " +
       score +
       " Play Again?"
@@ -143,10 +150,26 @@ function gameStart() {
 
 // draw images
 
+// function startPage(){
+//   ctx.drawImage(bg, 0, 0, window.innerWidth, window.innerHeight);
+//   theme.play();
+//   requestAnimationFrame(startPage);
+//   document.addEventListener("keydown", function (e) {
+//   if (e.keyCode === 83) {
+//     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+//     draw();
+    
+
+//   }
+// });
+// }
+
+
+
 function draw() {
   ctx.drawImage(bg, 0, 0, window.innerWidth, window.innerHeight);
   theme.play();
-  for (var i = 0; i < astroid.length; i++) {
+  for (let i = 0; i < astroid.length; i++) {
     ctx.drawImage(genAstroid, astroid[i].x, astroid[i].y);
 
     astroid[i].x -= 4;
@@ -177,7 +200,7 @@ function draw() {
     }
   }
 
-  for (var a = 0; a < ammo.length; a++) {
+  for (let a = 0; a < ammo.length; a++) {
     ctx.drawImage(bigMissile, ammo[a].x, ammo[a].y);
     ammo[a].x -= 2;
 
@@ -214,6 +237,7 @@ function draw() {
 
   requestAnimationFrame(draw);
   missileHit();
+  move();
 }
-
+// startPage();
 draw();
