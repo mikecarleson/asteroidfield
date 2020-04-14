@@ -228,6 +228,39 @@ function draw() {
 
   }
 
+  //Touch Controls
+  let clientX;
+  let clientY;
+  
+  cvs.addEventListener('touchstart', function(ev) {
+    // Cache the client X/Y coordinates
+    clientX = ev.touches[0].clientX;
+    clientY = ev.touches[0].clientY;
+    if(clientY < eY && eY > 0 && clientX <= 100) UP = true;
+    if(clientY > eY && eY < cvs.height - 100 && clientX <= 100) DOWN = true;
+    if (clientX > eX && missiles.length < 1 && missileCount > 0) {
+      launch.play();
+      missileCount--;
+      missiles.push({
+        x: eX + 40,
+        y: eY + 35,
+      });
+      requestAnimationFrame(fireMissile);
+    }
+
+  }, false);
+  
+  cvs.addEventListener('touchend', function() {
+    // Cache the client X/Y coordinates
+    
+    if(UP == true) UP = false;
+    if(DOWN == true) DOWN = false;
+
+  }, false);
+
+
+
+
   ctx.drawImage(earth, eX, eY);
 
   ctx.fillStyle = "#fff";
@@ -241,3 +274,4 @@ function draw() {
 }
 // startPage();
 draw();
+
