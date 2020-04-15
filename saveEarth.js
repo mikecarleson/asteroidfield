@@ -236,6 +236,7 @@ function draw() {
     // Cache the client X/Y coordinates
     clientX = ev.touches[0].clientX;
     clientY = ev.touches[0].clientY;
+    theme.play();
     if(clientY < eY + 50 && eY > 0 && clientX <= 300) UP = true;
     if(clientY > eY + 50 && eY < cvs.height - 100 && clientX <= 300) DOWN = true;
     if (clientX > 500 && missiles.length < 1 && missileCount > 0) {
