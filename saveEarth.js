@@ -23,7 +23,7 @@ missile.src = "images/missile.png";
 bigMissile.src = "images/bigMissile.png";
 exploding.src = "images/explodingEarth.jpg";
 
-// some letiables
+// some variables
 
 let eX = 100;
 let eY = window.innerHeight / 2;
@@ -78,8 +78,8 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-var UP = false; 
-var DOWN = false;
+let UP = false; 
+let DOWN = false;
 
 function move() {
 	
@@ -143,7 +143,7 @@ function gameStart() {
   if (conf == true) {
     location.reload();
   } else if (conf == false) {
-    close();
+    document.location = "start.html";
   }
 }
 

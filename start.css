@@ -1,0 +1,28 @@
+body {
+    background-image: url("./images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: "Press Start 2P", cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15vh;
+    line-height: 1.5;
+  }
+  #title {
+    font-size: 3rem;
+    color: greenyellow;
+  }
+  #instruct {
+    font-size: 1rem;
+    color: white;
+  }
+  @media only screen and (max-width: 768px) {
+    body {
+    margin-top: 0;
+  }
+  }
