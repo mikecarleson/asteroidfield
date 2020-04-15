@@ -143,27 +143,9 @@ function gameStart() {
   if (conf == true) {
     location.reload();
   } else if (conf == false) {
-    document.location = "start.html";
+    document.location = "index.html";
   }
 }
-
-
-// draw images
-
-// function startPage(){
-//   ctx.drawImage(bg, 0, 0, window.innerWidth, window.innerHeight);
-//   theme.play();
-//   requestAnimationFrame(startPage);
-//   document.addEventListener("keydown", function (e) {
-//   if (e.keyCode === 83) {
-//     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-//     draw();
-    
-
-//   }
-// });
-// }
-
 
 
 function draw() {

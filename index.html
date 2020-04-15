@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <title>Astroid Field</title>
-    <style>
-
-    body, html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-    canvas {
-    position:absolute;
-    border:none;
-}
-    </style>
   </head>
+
+  <audio autoplay>
+    <source src="./sounds/theme.mp3" type="audio/ogg">
+  </audio>
   <body>
-   
-   <canvas id="canvas" onload="music()"></canvas>
-   
-   <script src="saveEarth.js"></script>
+    
+    <div class="background">
+      <div class="box" id="title">
+        <p>Astroid Field</p>
+      </div>
+      <div class="box" id="instruct">
+        <p>
+          Avoid the astroids by pressing the up and down arrows. You can shoot
+          your way out if you get in a tight spot, but be careful, you only have
+          a 3 missile capacity. However, keep your eyes out for floating
+          missiles, as the will replenish your stock. Good luck saving the
+          Earth!
+        </p>
+      </div>
+      <div class="box">
+        <button class="startBtn" onclick="document.location = 'game.html'">
+          Start Game
+        </button>
+      </div>
+    </div>
   </body>
 </html>
